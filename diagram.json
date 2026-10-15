@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "author": "Greenhouse IoT",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -105.3, "left": -120, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 120, "left": -190, "attrs": {} },
+    { "type": "wokwi-membrane-keypad", "id": "keypad1", "top": -300, "left": 260, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -170, "left": -330, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-servo", "id": "servo1", "top": 130, "left": 280, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht1:SDA", "esp:4", "green", [ "v0" ] ],
+
+    [ "pot1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "pot1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "pot1:SIG", "esp:34", "orange", [ "v0" ] ],
+
+    [ "lcd1:VCC", "esp:5V", "red", [ "h0" ] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "lcd1:SDA", "esp:21", "blue", [ "h0" ] ],
+    [ "lcd1:SCL", "esp:22", "purple", [ "h0" ] ],
+
+    [ "servo1:V+", "esp:5V", "red", [ "h0" ] ],
+    [ "servo1:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "servo1:PWM", "esp:18", "gold", [ "h0" ] ],
+
+    [ "keypad1:R1", "esp:13", "green", [ "v0" ] ],
+    [ "keypad1:R2", "esp:14", "green", [ "v0" ] ],
+    [ "keypad1:R3", "esp:27", "green", [ "v0" ] ],
+    [ "keypad1:R4", "esp:26", "green", [ "v0" ] ],
+    [ "keypad1:C1", "esp:25", "blue", [ "v0" ] ],
+    [ "keypad1:C2", "esp:33", "blue", [ "v0" ] ],
+    [ "keypad1:C3", "esp:32", "blue", [ "v0" ] ],
+    [ "keypad1:C4", "esp:19", "blue", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
